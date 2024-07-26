@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 align='center'>otp verification</h1>
+    <table align="center" border="1">
+        <form method="POST">
+            {% csrf_token %}
+            <tr>
+                <th>otp</th>
+                <td><input type="number" name="otp"></td>
+            </tr>
+            <tr>
+                <th align="center" colspan="2"><input type="submit" value="submit"></th>
+            </tr>
+
+        </form>
+
+
+
+    </table>
+</body>
+
+</html>

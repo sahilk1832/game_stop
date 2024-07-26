@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 align="'center">Update Game</h1>
+    <table align="center" border="1">
+        <form method="POST">
+            {% csrf_token %}
+            {% for x in data %}
+
+            <tr>
+                <th>name</th>
+                <td><input type="text" name="name" value="{{x.name}}" ></td>
+            </tr>
+            <tr>
+                <th>description</th>
+                <td><input type="text" name="description"  value="{{x.description}}"></td>
+            </tr>
+            <tr>
+                <th>manufacturer</th>
+                <td><input type="text" name="manufacturer" value="{{x.manufacturer}}" ></td>
+            </tr>
+            <tr>
+                <th>category</th>
+                <td>
+                    <select name="category">
+                        <option value="fighting"{% if x.category == 'fighting' %} selected {% endif %}>fighting</option>
+                        <option value="action" {% if x.category == 'action' %} selected {% endif %}>action</option>
+                        <option value="shooter" {% if x.category == 'shooter' %} selected {% endif %}>shooter</option>
+                        <option value="sport" {% if x.category == 'sport' %} selected {% endif %}>sport</option>
+                        <option value="battle royale" {% if x.category == 'battle royale' %} selected {% endif %}>battle royale</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>price</th>
+                <td><input type="number" name="price" value="{{x.price}}" ></td>
+            </tr>
+            <tr>
+                <th align="center" colspan="2"><input type="submit" value="submit"></th>
+            </tr>
+            {% endfor %}
+        </form>
+    </table>
+</body>
+</html>

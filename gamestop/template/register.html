@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 align=" center">Register</h1>
+    <table align="center" border="1">
+        <form method="POST">
+            {% csrf_token %}
+            <tr>
+                <th>username</th>
+                <td><input type="text" name="username" ></td>
+            </tr>
+            <tr>
+                <th>firstname</th>
+                <td><input type="text" name="first_name" ></td>
+            </tr>
+            <tr>
+                <th>lastname</th>
+                <td><input type="text" name="last_name" ></td>
+            </tr>
+            <tr>
+                <th>email</th>
+                <td><input type="email" name="email" ></td>
+            </tr>
+            <tr>
+                <th>password</th>
+                <td><input type="password" name="password" ></td>
+            </tr>
+            <tr>
+                <th>confirm password</th>
+                <td><input type="password" name="confirm_password" ></td>
+            </tr>
+            <tr>
+                <th align="center" colspan="2"><input type="submit" value="submit"></th>
+            </tr>
+        </form>
+    </table>
+    <h1 align = 'center'>{{error}} </h1>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1 align="center">All Game Imformation</h1>
+    <table align="center" border="1">
+        <form method="POST">
+            {% csrf_token %}
+            <tr>
+                <th><input type="search" name="search" id="search"></th>
+                <th><input type="submit" value="submit"></th>
+            </tr>
+        </form>
+    </table>
+    <br>
+    <br>
+
+    <table align="center" border="1" width = '80%'>
+<tr>
+    <th>name</th>
+    <th>description</th>
+    <th>manufacturer</th>
+    <th>category</th>
+    <th>price</th>
+    <th>image</th>
+    <th>update</th>
+    <th>delete</th>
+    <th>Cart</th>
+</tr>
+{% for x in data %}
+<tr>
+    <td> {{x.name}} </td>
+    <td> {{x.description}} </td>
+    <td> {{x.manufacturer}} </td>
+    <td> {{x.category}} </td>
+    <td> {{x.price}} </td>
+    <td> <img src="{{x.image.url}}" ></td>
+    <td><a href="/update_product/{{x.id}}">update</a></td>
+    <td><a href="/delete_product/{{x.id}}">delete</a></td>
+    <td><a href="/create_cart/{{x.id}}">Add to Cart</a></td>
+</tr>
+{% endfor %}
+    </table>
+    <script>
+        $( function() {
+          var availableTags = [ ];
+          '{% for x in data %}'
+            availableTags.push('{{x.name}}')
+            
+
+          '{% endfor %}'
+         
+
+          
+          $( "#search" ).autocomplete({
+            source: availableTags
+          });
+        } );
+        </script>
+</body>
+</html>

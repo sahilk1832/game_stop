@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+   
+    <title>Document</title>
+</head>
+
+<body style="background-image : url(static/image/img4.jpeg); background-repeat: no-repeat;"  >
+    <h1 align="center" class="style1">Index page </h1>
+    {% if request.user.is_authenticated %}
+    <h3 align='center'><a href="/logout">Logout</a></h3>
+    <h3 align="center"><a href="/create_product">Add Product</a></h3>
+
+    <h3 align="center"><a href="/read_product">Review Product</a></h3>
+
+    <h3 align="center"><a href="/read_cart">Show Carts</a></h3>
+
+    <h3 align="center"><a href="/read_order">Previous Orders</a></h3>
+
+    {% else %}
+    <h2 align='center'><a href="/register">Register form</a></h2>
+    <h2 align='center'><a href="/login">Login</a></h2>
+    {% endif %}
+
+    {% if request.user.is_superuser %}
+
+    {% elif request.user.is_staff %}
+    <h3 align="center"><a href="/create_product">Add Product</a></h3>
+
+    <h3 align="center"><a href="/read_product">Review Product</a></h3>
+
+    <h3 align="center"><a href="/read_cart">Show Carts</a></h3>
+
+    <h3 align="center"><a href="/read_order">Previous Orders</a></h3>
+    {% else %}
+    <h3 align="center"><a href="/read_product">Review Product</a></h3>
+
+    <h3 align="center"><a href="/read_cart">Show Carts</a></h3>
+
+    <h3 align="center"><a href="/read_order">Previous Orders</a></h3>
+    {% endif %}
+
+
+</body>
+
+</html>
